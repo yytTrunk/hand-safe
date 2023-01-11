@@ -1,0 +1,51 @@
+/* pages/login/login.wxss */
+page{
+  background-color: #17a0f7;
+  position: relative;
+  background-image: url(https://safe.61kids.com.cn/bg.png);
+  background-size: 99.8%;
+  background-repeat: no-repeat;
+}
+.wrap{
+  width: 100%;
+  height: 100%;
+  width: 86%;
+  margin: 0 auto;
+ 
+}
+.text{
+  display: block;
+  font-size: 60rpx;
+  margin-top: 60%;
+}
+.form input{
+  width: 604rpx;
+  padding: 0 30rpx;
+  height: 96rpx;
+	background-blend-mode: normal, 
+		normal;
+	border-radius: 12rpx;
+  border: solid 2rpx rgba(255, 255, 255, 0.5);
+  margin:50rpx 0;
+  color: #ffffff;
+}
+.forget{
+  display: block;
+  text-align: right;
+}
+.login{
+  width: 100% !important;
+	height: 96rpx;
+	background-color: #ffffff;
+  border-radius: 12rpx;
+  display: block;
+  margin-top: 50rpx;
+font-weight: normal;
+line-height: 96rpx;
+}
+.company{
+  opacity: 0.6;
+  letter-spacing: 8rpx;
+  text-align: center;
+  margin-top: 200rpx;
+}

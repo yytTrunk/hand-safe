@@ -1,0 +1,19 @@
+<!--component/top.wxml-->
+<view class="bgImg"><image src="../../image/bg.jpg" mode="widthFix"></image></view>
+ <view class="message">
+    <view  class="total">
+      <image src="https://safe.61kids.com.cn{{pic}}"  mode="widthFix"></image>
+      <!-- <image src="../../image/avatar.png" wx:else="{{pic == ''}}" mode="widthFix"></image> -->
+    </view>
+    <view class="content">
+      <text class="f48 c020433 block">{{name}}</text>
+      <text class="f28 c404b69 block">{{job}}</text>
+      <text class="f28 c404b69 block">{{phone}}</text>
+    </view>
+    <view class="more" bindtap="edit">
+    <image src="../../image/edit.png" mode="widthFix"></image>
+    </view>
+    <view>
+      <!-- <text class="block" style="width: 20px;height: 20px;">></text> -->
+    </view>
+ </view>

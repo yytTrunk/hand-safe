@@ -1,0 +1,15 @@
+<!--pages/clock/clock.wxml-->
+<!-- 这是地图部分 -->
+ 
+<view class="map_container">
+  <map class='map' longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}' markers='{{markers}}' 
+    show-location  bindcontroltap="getCenterLocation"></map>
+</view>
+ 
+ <view class="btn">
+  <button class="btncolor" bindtap="submit">提交</button>
+ </view>
+
+ 
+
+

@@ -1,0 +1,29 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+<top name="{{name}}" job="{{job}}" phone="{{phone}}" pic="{{thumb}}"></top>
+<view class="list">
+  <view class="listItem">
+    <label class="f28 ca6acb0">手机号码</label>
+    <text class="f28 c5f5f5f">{{phone}}</text>
+  </view>
+  <view class="listItem">
+    <label class="f28 ca6acb0" style="text-align-last:justify;">姓名</label>
+    <text class="f28 c5f5f5f">{{name}}</text>
+  </view>
+  <view class="listItem">
+    <label class="f28 ca6acb0" style="text-align-last:justify;">角色</label>
+    <text class="f28 c5f5f5f">{{job}}</text>
+  </view>
+  <view class="listItem" bindtap="skip" wx:if="{{grid == 1}}">
+    <label class="f28 ca6acb0">当前积分</label>
+    <text class="f28 c5f5f5f">{{score}}</text>
+    <image src="../../image/more.png" mode="widthFix"></image>
+  </view>
+  <view class="listItem">
+    <label class="f28 ca6acb0">绑定微信</label>
+    <!-- <text class="f28 c5f5f5f">点击绑定微信</text> -->
+    <text class="f28 cff0000">已绑定微信</text>
+    <image src="../../image/more.png" mode="widthFix"></image>
+  </view>
+</view>
+</view>

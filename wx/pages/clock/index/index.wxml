@@ -1,0 +1,8 @@
+<!--pages/clock/index/index.wxml-->
+<view class="container">
+
+<view class="btncolor"  style="width: 96% !important;" bindtap="colck2">危大工程打卡</view>
+<view  class="btncolor" style="width: 96% !important;" bindtap="colck1">班前会打卡</view>
+<view  class="btncolor" style="width: 96% !important;" bindtap="colck3">打卡记录</view>
+<view  class="btncolor" style="width: 96% !important;;" bindtap="colck4">代班处理</view>
+</view>

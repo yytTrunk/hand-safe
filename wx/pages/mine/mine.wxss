@@ -1,0 +1,26 @@
+/* pages/mine/mine.wxss */
+.list{
+  margin-top: 160rpx;
+}
+.listItem{
+  margin: 0 30rpx;
+  height: 100rpx;
+  border-bottom: 1rpx solid rgba(0,0,0,.1);
+  line-height: 130rpx;
+  display: flex;
+  justify-content: left;
+  position: relative;
+}
+.listItem label{
+  width: 120rpx;
+  display: block;
+}
+.listItem text{
+  margin-left: 30rpx;
+}
+.listItem image{
+  position: absolute;
+  width: 30rpx;
+  top:50rpx;
+  right: 10rpx;
+}

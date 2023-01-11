@@ -1,0 +1,52 @@
+/* pages/point/point.wxss */
+.content{
+  margin: 0 30rpx;
+  margin-top: 160rpx;
+}
+.point_text label:first-child{
+  margin-left: 20rpx;
+}
+.point_text label{
+  margin-left: 60rpx;
+}
+.point_text text{
+  margin-left: 15rpx;
+}
+.point_list{
+  width: 100%;
+  margin-top: 36rpx;
+}
+.point_list .list_item{
+  width: 100%;
+  height: 160rpx;
+	background-color: #ffffff;
+	box-shadow: 0rpx 30rpx 60rpx 0rpx 
+		rgba(19, 104, 158, 0.1), 
+		0rpx 30rpx 60rpx 0rpx 
+		rgba(19, 104, 158, 0.1);
+  border-radius: 20rpx;
+  position: relative;
+  padding: 40rpx 0;
+  margin-bottom: 40rpx;
+}
+.list_item text{
+  display: block;
+  margin-left: 35rpx;
+  margin-bottom: 20rpx;
+  width: 50%;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}
+.list_item .point_number{
+  position: absolute;
+  top: 100rpx;
+  right: 100rpx;
+  font-size: 48rpx;
+  font-weight: normal;
+}
+.list_item .point_date{
+  position: absolute;
+  top: 170rpx;
+  right: 40rpx;
+}

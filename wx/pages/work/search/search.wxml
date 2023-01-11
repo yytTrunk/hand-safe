@@ -1,0 +1,15 @@
+<!--pages/work/add_work/addWork.wxml-->
+<view class="hint">
+  <text class="f24">点击搜索</text>
+</view>
+<view class="container">
+  <form class="content" bindsubmit="submitWork">
+    <view class="list" >
+      <input type="text"  placeholder-class="ca6acb0 f24" placeholder="请输入文字" name="title" value="{{title}}"></input>
+      <button form-type="submit" class="" style="background-color: gray;">搜索</button>
+    </view>
+  </form>
+  <view class="list" wx:for="{{lists}}" wx:key="index" data-id="{{item.id}}" bindtap="selected">
+    <view>{{item.describution}}</view>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view class="top">
+    <text class="cfff f36">{{item_name}}</text>
+  </view>
+  <view class="card project_detail">
+    <view class="project_name">
+    <text class="f28 c17a0f7">{{item_name}}</text>
+    <text  class="f22 c999">创建时间：{{item_date}}</text>
+    </view>
+    <view class="project_content f26  c3d4042">
+      {{item_describution}}
+    </view>
+  </view>
+  <view class="card project_team">
+    <text class="f28 c17a0f7 title">项目组成员（{{item_user.length}}）</text>
+    <view class="team">
+        <view wx:for="{{item_user}}" wx:key='index'>
+          <image src="{{baseurl}}{{item.thumb}}" mode="widthFix"></image>
+          <text class="team_name f24 c3d4042">{{item.nickname}}</text>
+        </view>
+       
+    </view>
+  </view>
+  <view class="card list" wx:for="{{item_work}}" wx:key="index">
+    <text class="f28 c17a0f7 title">{{item.name}}</text>
+    <view class="content_list">
+      <view><label class="f24 c17a0f7">所属项目</label><text class="f24 c3d4042">{{item_name}}</text></view>
+      <!-- <view><label class="f24 c17a0f7">项目经理</label><text class="f24 c3d4042">{{item.project_name}}</text></view> -->
+      <view><label class="f24 c17a0f7">安全科科长</label><text class="f24 c3d4042">{{item.safe_name}}</text></view>
+      <view><label class="f24 c17a0f7">安全员</label><text class="f24 c3d4042">{{item.safe_name_small}}</text></view>
+      <view><label class="f24 c17a0f7">网格员</label><text class="f24 c3d4042">{{item.safe_name_grid}}</text></view> 
+    </view>
+    
+  </view>
+  
+</view>

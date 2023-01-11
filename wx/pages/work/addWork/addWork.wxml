@@ -1,0 +1,102 @@
+<!--pages/work/add_work/addWork.wxml-->
+<view class="hint" wx:if="{{is_add}}">
+  <text class="f24">点击+号添加拍摄图片</text>
+</view>
+<view class="container" wx:if="{{is_add}}">
+  <view class="img_wrap clear">
+    <view wx:for="{{img_list}}" wx:key="index">
+      <image src="{{item}}" mode="widthFix"></image>
+    </view>
+
+    <view class="add" bindtap="img_show">
+      <image mode="widthFix" src="../../../image/addImage.png"></image>
+    </view>
+
+  </view>
+  <form class="content" bindsubmit="submitWork">
+
+    <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" placeholder="所属项目" name="project" value="{{project_name}}"></input>
+    </view>
+
+    <view class="list" wx:if="{{is_show}}">
+      <picker bindchange="bindSubmitChange" value="{{submit_item}}" range="{{is_submit}}">
+        <view class="picker ca6acb0 f24">
+          是否提交安全科长：{{is_submit[submit_item]}}
+        </view>
+      </picker>
+      <image src="../../../image/more.png" mode="widthFix"></image>
+    </view>
+
+
+    <view class="list">
+      <picker bindchange="bindTypeChange" value="{{type_item}}" range="{{type}}">
+        <view class="picker ca6acb0 f24">
+          上报类型：{{type[type_item]}}
+        </view>
+      </picker>
+      <image src="../../../image/more.png" mode="widthFix"></image>
+    </view>
+
+
+    <view class="list" wx:if="{{is_show}}">
+      <picker bindchange="bindWorkChange" value="{{item}}" range="{{work}}">
+        <view class="picker ca6acb0 f24">
+          选择工区：{{work[item]}}
+        </view>
+      </picker>
+      <image src="../../../image/more.png" mode="widthFix"></image>
+    </view>
+
+
+    <view class="list" wx:if="{{is_show}}">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" placeholder="单位工程" name="dwgc" value="{{dwgc}}"></input>
+    </view>
+    <view class="list" wx:if="{{is_show}}">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" placeholder="作业内容" name="zynr" value="{{zynr}}"></input>
+    </view>
+    <view class="list" wx:if="{{is_show}}">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" placeholder="问题描述" name="wtms" value="{{wtms}}"></input>
+      <view bindtap="search">
+        <image src="../../../image/question.png" mode="widthFix" class="qustion"></image>
+      </view>
+    </view>
+
+    <view class="list" wx:if="{{is_show}}">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" placeholder="整改建议" name="zgjy" value="{{zgjy}}"></input>
+    </view>
+
+
+    <view class="list">
+      <input type="text" placeholder="补充说明" maxlength="2000" name="msbc" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" bindinput="bindInput2"></input>
+      <text class="ca6acb0 f24">{{explain_num}}/2000</text>
+    </view>
+
+
+    <view class="list">
+      <picker mode="date" value="{{date}}" start="2022-01-01" end="2099-01-01" bindchange="bindDateChange">
+        <view class="picker ca6acb0 f24">
+          整改时间: {{date}}
+        </view>
+      </picker>
+    </view>
+
+    <button form-type="submit" class="btncolor" style="margin-top: 50rpx;">提交</button>
+  </form>
+
+</view>
+
+<view class="hint" wx:if="{{is_search}}">
+  <text class="f24">点击搜索</text>
+</view>
+<view class="container" wx:if="{{is_search}}">
+  <form class="content" bindsubmit="submitSearch">
+    <view class="list">
+      <input type="text" placeholder-class="ca6acb0 f24" placeholder="请输入文字" name="title" value="{{title}}"></input>
+      <button form-type="submit" class="btncolor" style="width: 40% !important;height: 80rpx !important;line-height: 80rpx !important;margin: 0 !important;">搜索</button>
+    </view>
+  </form>
+  <view class="list" wx:for="{{lists}}" wx:key="index" data-id="{{item.id}}" bindtap="selected">
+    <view class="question_list f26">{{item.describution}}</view>
+  </view>
+</view>

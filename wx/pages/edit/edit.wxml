@@ -1,0 +1,23 @@
+<!--pages/edit/edit.wxml-->
+<view class="container">
+<!-- <view class="img_wrap clear">
+  <view bindtap=img_show" class="add">
+  
+  <image mode="widthFix" src="../../image/addImage.png"></image></view>
+</view> -->
+<form bindsubmit="submitEdit" class="edit" class="content">
+<view class="list"  bindtap="img_show">
+  <text class="ca6acb0 f24" >更换头像</text>
+  <image src="../../image/addImage.png"   mode="widthFix" width='20'  wx:if="{{images == ''}}"></image>
+  <image src="{{img_list[0]}}"   mode="widthFix" width='20' wx:else ></image>
+</view>
+<view class="list">
+  <input class="ca6acb0" name='name' placeholder-class="ca6acb0 f24" type="text" placeholder="请输入名称"></input>
+</view>
+<view class="list">
+  <input class="ca6acb0" name='phone' placeholder-class="ca6acb0 f24" type="text" placeholder="请输入电话号码"></input>
+</view>
+<button class="btncolor" form-type="submit">提交</button>
+</form>
+</view>
+

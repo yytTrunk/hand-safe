@@ -1,0 +1,16 @@
+/* pages/clock/clock.wxss */
+
+.map_container {
+  height: 500px;
+  width: 100%;
+}
+ 
+.map {
+  height: 100%;
+  width: 100%;
+}
+ .btn{
+   width: 96%;
+   margin: 80rpx auto;
+ }
+ 

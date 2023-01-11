@@ -1,0 +1,43 @@
+<!--pages/clock/clock.wxml-->
+<view class="hint">
+  <text class="f24" style="margin-left: 0;">特殊原因不打卡/请假其他原因需代班！注：需填写情况说明，等待审核</text>
+</view>
+<view class="container">
+  <form class="content" bindsubmit="submitClock">
+    <view class="list">
+      <input type="text" class="ca6acb0 f24" disabled="true" value="{{itemName}}"></input>
+    </view>
+    <view class="list">
+      <picker bindchange="bindTypeChange" value="{{type_item}}" range="{{type}}">
+        <view class="picker ca6acb0 f24">
+          选择类别：{{type[type_item]}}
+        </view>
+      </picker>
+      <image src="../../image/more.png" mode="widthFix"></image>
+    </view>
+
+    <view class="list" wx:if="{{is_select_work}}">
+      <picker bindchange="bindSafeChange" value="{{safe_item}}" range="{{project_safe_grid}}">
+        <view class="picker ca6acb0 f24">
+          选择代班人员：{{project_safe_grid[safe_item]}}
+        </view>
+      </picker>
+      <image src="../../image/more.png" mode="widthFix"></image>
+    </view>
+    
+    <view class="list" wx:if="{{is_select_work}}">
+      <picker mode="date" value="{{date}}" start="{{date_now}}" end="2099-01-01" bindchange="bindDateChange">
+        <view class="picker ca6acb0 f24">
+          代班日期: {{date}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="list">
+      <input type="text" placeholder="请输入情况说明" name="describution" maxlength="2000" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" bindinput="bindInput2"></input>
+      <text class="ca6acb0 f24">{{explain_num}}/2000</text>
+    </view>
+    <button form-type="submit" class="btncolor" style="margin-top: 100rpx;">提交</button>
+  </form>
+
+</view>

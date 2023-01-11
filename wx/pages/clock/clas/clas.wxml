@@ -1,0 +1,31 @@
+<!--pages/clock/record/record .wxml-->
+<view class="container">
+  <view class="wrap" wx:for="{{data}}" wx:key="index">
+    <view class="card">
+      <view class="content">
+        <view class="msg">
+          <text class="f30 c666" wx:if="{{item.is_local  ==2}}">{{item.user.nickname}}({{item.user.phone}})</text>
+          <text class="f30 c666" wx:if="{{item.is_local  ==1}}" style="color: rgb(52, 16, 214);">我的申请</text>
+          <view class="date">
+            <text class="f24 cff0000" style="display: inline;" >代班时间</text><label class="f22 c999">{{item.whether_date}}</label>
+          </view>
+        </view>
+      </view>
+      <view class="explain">
+        <text class="f30 c666">代班原因：</text>
+        <text class="f30 c000 text">{{item.whether_work_reason}}</text>
+      </view>
+      <view>
+        <text class="accept"  wx:if="{{item.status==0 && item.is_local  ==2}}"   bindtap="accept" data-id="{{item.id}}">通过</text>
+        <text class="reject"   wx:if="{{item.status==0 && item.is_local  ==2}}"  bindtap="reject" data-id="{{item.id}}">拒绝</text>
+        <text   wx:if="{{item.status==1 && item.is_local  ==2}}"  style="margin-left: 80%; color: red;display: block;font-size: 30rpx;" >已通过</text>
+        <text   wx:if="{{item.status==2 && item.is_local  ==2}}" style="margin-left: 80%; color: gray;display: block;font-size: 30rpx;" >已拒绝</text>
+
+        <text   wx:if="{{item.status==0 && item.is_local  ==1}}"  style="margin-left: 72%; color: gray;display: block;font-size: 30rpx;" >待对方审核</text>
+        <text   wx:if="{{item.status==1 && item.is_local  ==1}}"  style="margin-left: 72%; color: red;display: block;font-size: 30rpx;" >对方已通过</text>
+        <text   wx:if="{{item.status==2 && item.is_local  ==1}}"  style="margin-left: 72%; color: gray;display: block;font-size: 30rpx;" >对方已拒绝</text>
+      </view>
+    </view>
+  </view>
+
+</view>

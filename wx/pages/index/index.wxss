@@ -1,0 +1,27 @@
+/**index.wxss**/
+.container{
+  position: relative;
+}
+
+.page{
+  width: 94%;
+  margin: 0 auto;
+  margin-top: 180rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.page .botton{
+	height: 90rpx;
+	background-color: #17a0f7;
+	box-shadow: 0rpx 30rpx 60rpx 0rpx 
+		rgba(19, 104, 158, 0.1), 
+		0rpx 6rpx 0rpx 0rpx 
+		rgba(19, 104, 158, 0.1);
+  border-radius: 20rpx;
+  display: block;
+  text-align: center;
+  line-height: 90rpx;
+  margin-bottom: 60rpx;
+  padding: 0 20rpx;
+}

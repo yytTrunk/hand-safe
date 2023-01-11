@@ -1,0 +1,21 @@
+/* pages/edit/edit.wxss */
+
+.content{
+  margin: 70rpx 30rpx;
+}
+.list{
+  height: 80rpx;
+  border-bottom: 1rpx solid #dfe5e9;
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.list input{
+  height: 80rpx;
+  width: 85%;
+}
+.list image{
+  width: 80rpx;
+ border-radius: 10rpx;
+ 
+}

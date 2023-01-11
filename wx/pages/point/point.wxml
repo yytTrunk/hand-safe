@@ -1,0 +1,28 @@
+<!--pages/point/point.wxml-->
+<view class="container">
+  <!-- <top></top> -->
+  <view class="content">
+    <view class="point_text">
+      <label class="ca6acb0 f28">当前积分</label><text class="c000 f28">{{score}}</text>
+      <label  class="ca6acb0 f28">加分</label><text  class="c000 f28">+{{score_detail.a_num}}</text>
+      <label  class="ca6acb0 f28">扣分</label><text  class="c000 f28">-{{score_detail.s_num}}</text>
+    </view>
+    <view class="point_list">
+      <!-- <view class="list_item">
+          <text class="f30 c666">项目名称：浙江理工</text>
+          <text class="f30 c666">工区：工区一</text>
+          <text class="f30 c666">说明：合格完成项目</text>
+          <label class="cff0000 point_number">+4</label>
+          <label class="point_date c999 f22">2022/10/20</label>
+      </view> -->
+      <view class="list_item" wx:for="{{score_detail.score}}" wx:key="index">
+          <text class="f30 c666">项目名称：{{user.project_name}}</text>
+          <text class="f30 c666">说明：{{item.content}}</text>
+          <label class="c00c244 point_number" wx:if="{{item.type==0}}">-{{item.score}}</label>
+          <label class="cff0000 point_number"  wx:if="{{item.type==1}}">+{{item.score}}</label>
+          <label class="point_date c999 f22">{{item.create_time}}</label>
+      </view>
+    </view>
+  </view>
+</view>
+

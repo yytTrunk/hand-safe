@@ -1,0 +1,27 @@
+/* pages/work/withdraw/withdraw.wxss */
+.page{
+  margin: 30rpx;
+  padding: 30rpx 0;
+}
+.page view {
+  margin-bottom: 30rpx;
+}
+.page view label{
+  width: 150rpx;
+  display: inline-block;
+  margin-left: 45rpx;
+  text-align-last: center;
+}
+.page view text{
+  margin-left: 30rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: 60%;
+  line-height: 26rpx;
+}
+.date{
+  text-align: right;
+  width: 95%;
+}

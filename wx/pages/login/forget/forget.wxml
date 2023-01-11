@@ -1,0 +1,24 @@
+<!--pages/login/forget/forget.wxml-->
+<view class="container">
+  <text class="text c17a0f7">请输入手机号</text>
+  <form bindsubmit="formSubmit">
+    <view class="phone">
+      <label class="c000 f36 label">+86</label>
+      <input type="number" class="c000 f36 tel" maxlength="11" bindinput="getPhone" name="phone"></input>
+    </view>
+    <button class="btncolor" bindtap="getCode" disabled="{{code_disable}}">{{code_text}}</button>
+    <view class="margin50 c000 f36">手机验证码</view>
+    <view class="code">
+    <input type="number" bindinput="bindFocus"  name="code"></input>
+      <text class="c17a0f7" wx:for="{{codeList}}" >{{item}}</text>
+    </view>
+    <view class="margin50 marginb50 c000 f36">设置您的密码</view>
+    <view class="border">
+      <input type="password" class="f32" name="password" placeholder="请输入密码" placeholder-class="f34"></input>
+    </view>
+    <view class="border">
+      <input type="password" class="f32" name="confirmPassword" placeholder="请输入确认密码" placeholder-class="f34"></input>
+    </view>
+    <button form-type="submit" class="btncolor margin50" >提交修改</button>
+  </form>
+</view>

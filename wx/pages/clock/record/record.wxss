@@ -1,0 +1,56 @@
+/* pages/clock/record/record .wxss */
+.wrap{
+  margin: 30rpx;
+}
+.card{
+  margin-top: 40rpx;
+  width: 100%;
+  padding: 40rpx 0;
+}
+.content{
+  margin: 0 30rpx;
+  display: flex;
+}
+.content .map{
+  width: 160rpx;
+	height: 160rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.content .map map{
+  width: 100%;
+  height: 100%;
+}
+/* .content .msg{
+  width: 74%;
+} */
+.content .msg text{
+  display: block;
+  /* margin-left: 45rpx; */
+  line-height: 2em;
+  /* width: 90%; */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}
+.date{
+  width: 100%;
+
+}
+.date label{
+  margin-left: 30rpx;
+}
+.explain{
+  margin: 30rpx;
+  margin-bottom: 0;
+  display: flex;
+}
+.explain text{
+display: block;
+}
+.explain .text{
+  width: 73%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

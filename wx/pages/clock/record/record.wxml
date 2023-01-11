@@ -1,0 +1,29 @@
+<!--pages/clock/record/record .wxml-->
+<view class="container">
+  <view class="wrap" wx:for="{{data}}" wx:key="index">
+    <view class="card">
+      <view class="content">
+        <view class="msg">
+          <text class="f30 c666">{{item.project_name}}</text>
+          <text class="f30 c666" wx:if="{{item.type == 1}}">{{item.address == null ? '未施工无需打卡' : item.address}}</text>
+         
+          <text class="f30 c666" wx:if="{{item.whether_work == 2}}">
+            <text wx:if="{{item.whether_work_status == 0}}" class="f24 cff0000">{{item.whether_work_reason}} (待审核)</text>
+            <text wx:if="{{item.whether_work_status == 1}}" class="f24 cff0000">{{item.whether_work_reason}} (审核通过)</text>
+            <text wx:if="{{item.whether_work_status == 2}}" class="f24 cff0000">{{item.whether_work_reason}} (未通过)</text>
+          </text>
+          <view class="date" wx:if="{{item.whether_work == 1}}" >
+            <text class="f24 cff0000" style="display: inline;" wx:if="{{item.complete == 2}}">{{item.desc}}</text><label class="f22 c999" wx:if="{{item.complete == 2}}">{{item.create_time}}</label>
+            <text class="f24" style="display: inline;color: green;"  wx:if="{{item.complete == 1}}">{{item.desc}}</text><label class="f22 c999" wx:if="{{item.complete == 1}}">{{item.create_time}}</label>
+          </view>
+        </view>
+      </view>
+      <view class="explain">
+        <text class="f30 c666">情况说明：</text>
+        <text class="f30 c000 text" wx:if="{{item.describution == null}}">暂无</text>
+        <text class="f30 c000 text" wx:else>{{item.describution}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,80 @@
+<view class="hint">
+  <text class="f24" style="color:orange;">等待安全科长审核</text>
+</view>
+<view class="container">
+  <form class="content" bindsubmit="submitWork">
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">整改说明：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24"  name="msg" value="{{msg}}"></input>
+    </view>
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">项目部名称：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{item_name}}"></input>
+    </view>
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;text-align-last:justify;width: 115rpx;">工区：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{item_work}}"></input>
+    </view>
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">问题描述：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{wtms}}"></input>
+    </view>
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">整改建议：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="subject" value="{{subject}}"></input>
+    </view>
+
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">补充说明：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="bcsm" value="{{bcsm}}"></input>
+    </view>
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">整改时间：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{end_time}}"></input>
+    </view>
+
+    <view class="list">
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">审批意见：</label>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="audit_msg" value="{{audit_msg}}"></input>
+    </view>
+    
+    <view class='img_list'>
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">现场图片：</label>
+      <view class="img_list">
+        <image wx:for="{{xcimg}}" wx:key="index"  data-src="{{xcimg}}" data-index="{{index}}" catch:tap="preview" src="{{item}}" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <view class='img_list'>
+      <label class="f24 cbebdbd" style="line-height: 80rpx;">整改图片：</label>
+      <view class="img_list">
+        <image wx:for="{{zgimg}}" wx:key="index" data-src="{{zgimg}}" data-index="{{index}}"  catch:tap="preview" src="{{item}}" mode="aspectFit"></image>
+      </view>
+    </view>
+    <!-- <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{dwgc}}"></input>
+    </view>
+    <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{zynr}}"></input>
+    </view> -->
+
+    <!-- <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{subject}}"></input>
+    </view>
+    <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{source}}"></input>
+    </view> -->
+
+    <!-- <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" disabled="true" name="project" value="{{bcms}}"></input>
+    </view> -->
+
+    <!-- <view class="list">
+      <view class="ca6acb0 f24" style="color:red;line-height: 80rpx;">描述说明：</view>
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24"  name="msg" value=""></input>
+    </view> -->
+
+    <button form-type="submit" class="btncolor" style="margin-top: 60rpx;">提交</button>
+  </form>
+
+</view>

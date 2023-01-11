@@ -1,0 +1,5 @@
+<!--pages/clock/index/index.wxml-->
+<view class="container">
+  <view class="btncolor" wx:key="key" wx:for="{{record_lat_list}}" style="width: 96% !important;" data-type="1" data-id="{{item.id}}"  data-lng="{{item.lng}}" data-lat="{{item.lat}}"  bindtap="colck">{{item.name}}</view>
+  <view class="btncolor" style="width: 96% !important;background-color: #4050e6 !important;"  data-type="2" bindtap="colck">代班/未施工</view>
+</view>

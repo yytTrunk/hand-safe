@@ -1,0 +1,78 @@
+{
+  "pages": [
+  
+    "pages/login/login",
+    "pages/edit/edit",
+    "pages/point/point",
+    "pages/work/addWork/addWork",
+    "pages/work/addWorkDetail/work",
+    "pages/index/index",
+    "pages/clock/metting/metting",
+    "pages/clock/index/index",
+    "pages/work/work",
+    "pages/work/workPending/work",
+    "pages/work/workPendingDetail/work",
+    "pages/work/withdraw/withdraw",
+    "pages/clock/record/record",
+    "pages/clock/clas/clas",
+    "pages/clock/whether/whether",
+
+    "pages/clock/clock",
+    "pages/clock/select/select",
+    "pages/login/forget/forget",
+    "pages/clock/map/map",
+    "pages/work/workDeatil/workDeatil",
+    "pages/work/search/search",
+    "pages/detail/detail",
+
+    "pages/mine/mine",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "浙江交工压实网格管理",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "component": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./image/home_.png",
+        "selectedIconPath": "./image/home.png"
+      },
+      {
+        "pagePath": "pages/clock/index/index",
+        "text": "打卡",
+        "iconPath": "./image/clock_.png",
+        "selectedIconPath": "./image/clock.png"
+      },
+      {
+        "pagePath": "pages/work/work",
+        "text": "隐患整改",
+        "iconPath": "./image/event_.png",
+        "selectedIconPath": "./image/event.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./image/mine_.png",
+        "selectedIconPath": "./image/mine.png"
+      }
+    ],
+    "color": "#ced8e1",
+    "selectedColor": "#179ef4"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+  
+  
+}

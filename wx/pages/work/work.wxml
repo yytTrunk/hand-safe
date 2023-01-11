@@ -1,0 +1,24 @@
+<!--pages/work/work.wxml-->
+<view class="container">
+  <text wx:if="{{workList.length == 0}}" class="f26 c999" style="text-align: center;">暂无隐患！</text>
+  <view class="card list" wx:for="{{workList}}" wx:key="index" data-id="{{item.id}}" data-status="{{item.status}}" bindtap="getDeatil">
+    <view class="top">
+      <text class="f30 c555" style="width: 135%;" wx:if="{{item.type==1}}">{{item.question}}</text>
+      <text class="f30 c555" style="width: 135%;" wx:if="{{item.type==2}}">{{item.describution}}</text>
+      <text class="f24 caaa" style="white-space: nowrap;overflow: hidden;margin-left: 5rpx;">{{item.create_time}}</text>
+    </view>
+    <view class="bottom">
+      <text class="f24 cccc text" wx:if="{{item.type==1}}">{{item.describution}}</text>
+      <text class="f24 cccc text" wx:if="{{item.type==2}}" style="color: orchid;">*未按方案施工</text>
+      <view class="f24 c00c244" wx:if="{{item.status == '已结束'}}">{{item.status}}</view>
+      <view class="f24 cff0000" wx:else>
+        {{item.status}}
+        <view wx:if="{{item.status == '待整改'}}" style="display: inline-block;">({{item.end_time}})</view>
+      </view>
+
+    </view>
+  </view>
+  <view class="add cfff" bindtap="add" wx:if="{{grid==1}}">
+    <image src="../../image/add.png" mode="widthFix"></image>
+  </view>
+</view>

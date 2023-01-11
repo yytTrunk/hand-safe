@@ -1,0 +1,80 @@
+/* pages/work/add_work/addWork.wxss */
+.img_wrap{
+  margin: 10rpx 30rpx;
+}
+.img_wrap view{
+  width: 210rpx;
+  height: 210rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  float: left;
+  margin-left: 28rpx;
+  border: 1rpx solid #eee;
+}
+.img_wrap view:nth-child(3n + 1){
+  margin-left: 0;
+}
+.img_wrap view image{
+  width: 100%;
+  
+}
+.img_wrap .add{
+ background-color: #f1f5f8;
+}
+.img_wrap .add image{
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  margin: 75rpx;
+}
+.content{
+  margin: 30rpx 30rpx;
+}
+.list{
+  height: 80rpx;
+  border-bottom: 1rpx solid #dfe5e9;
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.list input{
+  height: 80rpx;
+  width: 85%;
+}
+.list text{
+  line-height: 80rpx;
+}
+.list image{
+  width: 35rpx;
+  margin-top: 25rpx;
+  transform: rotate(90deg);
+}
+.picker{
+  line-height: 80rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+picker{
+  width: 94%;
+  display: block;
+}
+.hint{
+  width: 100%;
+  background-color:  #f1f5f8;
+  height: 64rpx;
+}
+.hint text{
+  color: #c4c7ca;
+  line-height: 64rpx;
+  margin-left: 30rpx;
+}
+.qustion{
+  transform: rotate(0deg) !important;
+  width: 40rpx !important;
+}
+.question_list{
+  margin: 0 30rpx;
+}

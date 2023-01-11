@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vaeThink</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="__ADMIN__/lib/layui/css/layui.css"  media="all">
+</head>
+<body class="vae-body">
+
+<div class="vae-content">
+  <form class="layui-form" style="display: inline;">
+    <input type="text" name="keywords"   placeholder="ID/标题" class="layui-input" autocomplete="off" style="max-width: 200px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
+    (打卡时间)
+    <div class="layui-input-inline">
+      <input type="text" id="start_time" name="start_time" autocomplete="off" placeholder="开始时间" class="layui-input">
+    </div> 至
+    <div class="layui-input-inline">
+      <input type="text" id="ending_time" name="ending_time" autocomplete="off" placeholder="截止时间" class="layui-input">
+    </div>
+    <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="vaeform">提交搜索</button>
+  </form> 
+  <table class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+
+<script type="text/html" id="thumb">
+  <img src='{{d.thumb}}' height="25"/>
+</script>
+<script type="text/html" id="whether_work_status">
+  {{# if(d.whether_work==2) { }}
+    {{#  if(d.whether_work_status == 0){ }}
+      待审核
+    {{#}}}
+
+    {{#  if(d.whether_work_status == 1){ }}
+    审核通过
+    {{#}}}
+
+    {{#  if(d.whether_work_status == 2){ }}
+    拒绝
+    {{#}}}
+  {{# }else{ }}
+    无需审核
+  {{#}}}
+</script>
+
+<script type="text/html" id="toolbarDemo">
+<!--  <div class="layui-btn-container">-->
+<!--    <a class="layui-btn layui-btn-primary layui-btn-sm" href="/admin/event/add">添加工区</a>-->
+  </div>
+</script>
+<script type="text/html" id="barDemo">
+  {{# if(d.whether_work==2 && d.whether_work_status ==  0 && d.group_id == 11){ }}
+  <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="status">审核</a>
+  {{# } }}
+
+  {{# if(d.whether_work!=2){ }}
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+  {{# } }}
+
+  {{# if(d.record_type == 1){ }}
+  <a class="layui-btn layui-btn-xs layui-btn-warm" href="/admin/record/detail/id/{{d.id}}">定位不准查看图片</a>
+  {{# } }}
+</script>
+
+          
+<script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+ 
+<script>
+layui.config({
+    base: '/themes/admin_themes/module/'
+}).use(['table','vaeyo','form'], function(){
+  var table = layui.table
+  ,vae = layui.vaeyo
+  ,$ = layui.$
+  ,form = layui.form;
+
+  var tableIns = table.render({
+    elem: '#test'
+    ,toolbar: '#toolbarDemo'
+    ,url: '/admin/record/getContentList' //数据接口
+    ,page: true //开启分页
+    ,limit: 15
+    ,cols: [[ //表头
+      {field: 'id', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
+      ,{field: 'project', title: '所属项目', align:'center'}
+      ,{field: 'describution', title: '描述', align:'center'}
+      ,{field: 'user', title: '打卡人', align:'center'}
+      ,{field: 'type', title: '打卡类型', align:'center'}
+      ,{field: 'complete', title: '打卡状态', align:'center'}
+      ,{field: 'whether_work_type', title: '工作状态', align:'center'}
+      ,{field: 'whether_work_reason', title: '原因', align:'center'}
+      ,{field: 'create_time', title: '时间', align:'center'}
+      ,{field: 'whether_work_status', title:'审核状态(特殊原因不打卡)', toolbar: '#whether_work_status', align:'center', width:100}
+      ,{field: 'right', toolbar: '#barDemo', width:250, align:'center'}
+    ]]
+  });
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定删除吗?', {icon: 3, title:'提示'}, function(index){
+        $.ajax({
+          url:"/admin/record/delete",
+          data:{id:data.id},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              obj.del();
+            }
+          }
+        })
+        layer.close(index);
+      });
+    }
+    if(obj.event === 'status'){
+      layer.confirm('确定通过审核吗?', {icon: 3, title:'提示'}, function(index){
+        $.ajax({
+          url:"/admin/record/status",
+          data:{id:data.id},
+          success:function(res){
+            layer.msg(res.msg);
+            if(res.code==1){
+              tableIns.reload();
+            }
+          }
+        })
+        layer.close(index);
+      });
+    }
+  });
+
+  //监听搜索提交
+  form.on('submit(vaeform)', function(data){
+    console.log(data.field.keywords || data.field.start_time)
+    // if(data.field.keywords || data.field.start_time || data.field.ending_time) {
+      tableIns.reload({where:{keywords:data.field.keywords,start_time: data.field.start_time,ending_time: data.field.ending_time}});
+      vae.bundledTab();
+    // }
+    return false;
+  });
+
+  layui.use('laydate', function(){
+    var laydate = layui.laydate;
+    var endDate= laydate.render({
+      elem: '#ending_time',//选择器结束时间
+      type: 'datetime',
+      min:"1970-1-1",//设置min默认最小值
+      done: function(value,date){
+        startDate.config.max={
+          year:date.year,
+          month:date.month-1,//关键
+          date: date.date,
+          hours: 0,
+          minutes: 0,
+          seconds : 0
+        }
+      }
+    });
+    //日期范围
+    var startDate=laydate.render({
+      elem: '#start_time',
+      type: 'datetime',
+      max:"2099-12-31",//设置一个默认最大值
+      done: function(value, date){
+        endDate.config.min ={
+          year:date.year,
+          month:date.month-1, //关键
+          date: date.date,
+          hours: 0,
+          minutes: 0,
+          seconds : 0
+        };
+      }
+    });
+
+  });
+});
+</script>
+
+</body>
+</html>

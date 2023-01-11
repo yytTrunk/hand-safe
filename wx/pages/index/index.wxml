@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+ <top name="{{userName}}" job="{{job}}" phone="{{phone}}" pic="{{pic}}"></top>
+ <view class="page">
+    <text class="botton cfff f30" bindtap="getDetail" wx:for="{{project}}" wx:key="index" data-id="{{item.id}}">{{item.name}}</text>
+ </view>
+</view>
+

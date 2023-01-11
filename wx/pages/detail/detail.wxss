@@ -1,0 +1,75 @@
+/* pages/detail/detail.wxss */
+.top{
+  width: 100%;
+  height: 150rpx;
+  background-color: #17a0f7;
+}
+.top text{
+  display: block;
+  text-align: center;
+  line-height: 150rpx;
+}
+
+.project_detail{
+  width: 100%;
+  padding: 50rpx 0;
+}
+.project_name{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+}
+.project_content{
+  margin: 0 30rpx;
+  margin-top: 50rpx;
+
+}
+.project_team{
+  padding: 40rpx 0;
+  margin: 30rpx;
+}
+.title{
+  margin: 38rpx 25rpx;
+}
+.team{
+  /* display: flex; */
+  margin: 0 30rpx;
+  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
+  margin-top: 30rpx;
+}
+.team view{
+  width: calc(100%/6);
+  margin-top: 20rpx;
+  float: left;
+}
+.team view image{
+  width: 64rpx;
+  height: 64rpx !important;
+  border-radius: 50%;
+  background-color: rosybrown;
+  margin: 0 auto;
+  display: block;
+
+}
+.team view text{
+display: block;
+text-align: center;
+margin-top: 15rpx;
+ 
+}
+.list{
+  margin: 0 30rpx;
+  margin-bottom: 30rpx;
+  padding: 30rpx 0;
+}
+.content_list{
+  margin: 30rpx;
+}
+.content_list view{
+  margin-bottom: 15rpx;
+}
+.content_list view label{
+  display: inline-block;
+  width: 30%;
+}

@@ -1,0 +1,14 @@
+<!--pages/work/withdraw/withdraw.wxml-->
+<view class="container">
+  <view class="card page">
+    <view> <label class="f30 cbebdbd">项目名称：</label><text class="f30 c6b6868">浙江理工</text></view>
+    <view><label class="f30 cbebdbd" style="text-align-last:justify;">工区：</label><text class="f30 c6b6868">浙江理工</text></view>
+    <view> <label class="f30 cbebdbd">单位工程：</label><text class="f30 c6b6868">浙江理工11111111111111111111111111</text></view>
+    <view><label class="f30 cbebdbd">作业内容：</label><text class="f30 c6b6868">浙江理工</text></view>
+    <view><label class="f30 cbebdbd">问题描述：</label><text class="f30 c6b6868">浙江理工</text></view>
+    <view> <label class="f30 cbebdbd">补充描述：</label><text class="f30 c6b6868">浙江理工</text></view>
+    <view class="date"><text class="f24 caaa">2020/02/17 13:40</text></view>
+    
+    <view class="btncolor" bindtap="widthdraw">撤回</view>
+  </view>
+</view>

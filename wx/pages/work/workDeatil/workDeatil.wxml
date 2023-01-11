@@ -1,0 +1,31 @@
+<!--pages/work/workDeatil/workDeatil.wxml-->
+<view class="container">
+  <view class="card page">
+    <view><label class="f30 cbebdbd">项目名称：</label><text class="f30 c6b6868">{{item_name}}</text></view>
+    <view><label class="f30 cbebdbd" style="text-align-last:justify;">工区：</label><text class="f30 c6b6868">{{item_work}}</text></view>
+    <!-- <view> <label class="f30 cbebdbd">单位工程：</label><text class="f30 c6b6868">{{dwgc}}</text></view>
+    <view><label class="f30 cbebdbd">作业内容：</label><text class="f30 c6b6868">{{zynr}}</text></view> -->
+    <view  wx:if="{{type==1}}"><label class="f30 cbebdbd">问题描述：</label><text class="f30 c6b6868">{{wtms}}</text></view>
+    <view> <label class="f30 cbebdbd">补充说明：</label><text class="f30 c6b6868">{{bcms}}</text></view>
+    <view  wx:if="{{type==1}}"><label class="f30 cbebdbd ">整改建议：</label><text class="f30 c6b6868">{{subject}}</text></view>
+    <view wx:if="{{type==1}}"><label class="f30 cbebdbd ">审批意见：</label><text class="f30 c6b6868">{{audit_msg}}</text></view>
+    <view><label class="f30 cbebdbd ">整改说明：</label><text class="f30 c6b6868">{{msg}}</text></view>
+    <view><label class="f30 cbebdbd ">审核说明：</label><text class="f30 c6b6868">{{reject_reason}}</text></view>
+    <view class="f30 cbebdbd" style="display: inline-block;">安全科科长、安全科员：</view><text class="f30 c6b6868">{{user}}</text><view><label class="f30 cbebdbd">整改时间：</label><text class="f30 c6b6868">{{end_time}}</text></view>
+    <view class="img_list">
+      <label class="f30 cbebdbd" style="display: block;">现场图片：</label>
+      <image wx:for="{{xcimg}}" wx:key="index" data-src="{{xcimg}}" data-index="{{index}}" catch:tap="preview" src="{{item}}"  mode="aspectFit"></image>
+      </view>
+      <view class="img_list">
+      <label class="f30 cbebdbd" style="display: block;">整改图片：</label>
+      <image wx:for="{{zgimg}}" wx:key="index"  data-src="{{zgimg}}" data-index="{{index}}" catch:tap="preview" src="{{item}}"  mode="aspectFit"></image>
+      </view>
+    <view class="date"><text class="f24 caaa">{{item_date}}</text></view>
+     
+  </view>
+  <view class="function">
+    <view class="btncolor btn" bindtap="withdraw" wx:if="{{status==2}}" >撤回</view>
+  <!-- <view class="btncolor btn" bindtap="Load" >下载</view> -->
+  </view>
+  
+</view>

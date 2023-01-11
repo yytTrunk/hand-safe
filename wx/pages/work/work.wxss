@@ -1,0 +1,46 @@
+/* pages/work/work.wxss */
+
+.container{
+padding-top: 40rpx;
+
+}
+.list{
+  margin: 0 30rpx;
+  margin-bottom: 30rpx;
+  padding:  40rpx 0;
+}
+.top,.bottom{
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom{
+  margin-top: 20rpx;
+}
+.text{
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.number{
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background-color: #ff0000;
+  text-align: center;
+  line-height: 32rpx;
+}
+.add{
+  width:80rpx;
+  height: 80rpx;
+  position: fixed;
+  top: 80%;
+  right: 45rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.add image{
+  width: 100%;
+}

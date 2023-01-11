@@ -1,0 +1,39 @@
+<view class="hint">
+  <text class="f24">点击+号添加拍摄图片</text>
+</view>
+<view class="container">
+  <view class="img_wrap clear">
+    <view wx:for="{{img_list}}" wx:key="index">
+      <image src="{{item}}" mode="widthFix"></image>
+    </view>
+
+    <view class="add" bindtap="img_show">
+      <image mode="widthFix" src="../../../image/addImage.png"></image>
+    </view>
+
+  </view>
+  <form class="content" bindsubmit="submitClock">
+
+    <!-- <view class="list">
+      <input type="text" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" placeholder="请输入名称" maxlength="50" bindinput="bindInput" name='title'></input>
+      <text class="ca6acb0 f24">{{text_num}}/50</text>
+    </view> -->
+    <view class="list">
+      <input type="text" class="ca6acb0 f24" disabled="true" value="{{itemName}}"></input>
+    </view>
+    <view class="list">
+      <picker bindchange="bindWorkChange" value="{{item}}" range="{{work}}">
+        <view class="picker ca6acb0 f24">
+          选择工区：{{work[item]}}
+        </view>
+      </picker>
+      <image src="../../../image/more.png" mode="widthFix"></image>
+    </view>
+    <view class="list">
+      <input type="text" placeholder="请输入情况说明" name="describution" maxlength="2000" class="ca6acb0 f24" placeholder-class="ca6acb0 f24" bindinput="bindInput2"></input>
+      <text class="ca6acb0 f24">{{explain_num}}/2000</text>
+    </view>
+    <button form-type="submit" class="btncolor" style="margin-top: 100rpx;">提交</button>
+  </form>
+
+</view>

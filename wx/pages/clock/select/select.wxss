@@ -1,0 +1,8 @@
+/* pages/clock/index/index.wxss */
+.btncolor{
+  background-color:  	#778899 !important;
+}
+
+.btncolor1{
+  background-color:  	#4050e6 !important;
+}

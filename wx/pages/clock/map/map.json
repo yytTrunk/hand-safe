@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "plugins": ["transform-runtime","transform-es2015-modules-commonjs"],
+  "navigationBarBackgroundColor": "#17a0f7",
+  "navigationBarTitleText": "打卡",
+  "navigationBarTextStyle":"white"
+}
