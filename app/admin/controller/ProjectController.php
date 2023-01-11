@@ -5,6 +5,11 @@ use app\port\model\User;
 use vae\controller\AdminCheckAuth;
 use think\Db;
 use app\common\model\Question as ArticleModel;
+use \PhpOffice\PhpSpreadsheet\Spreadsheet;
+use \PhpOffice\PhpSpreadsheet\IOFactory;
+use \PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Style\Border;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 class ProjectController extends AdminCheckAuth
 {
@@ -35,10 +40,18 @@ class ProjectController extends AdminCheckAuth
 
         return vae_assign_table(0,'',$content);
     }
+
+    public function exportExcel()
+    {
+        $newExcel = new Spreadsheet();//创建一个新的excel文档
+        return view();
+    }
+
     public function add()
     {
         return view();
     }
+
     public function addSubmit()
     {
         if($this->request->isPost()){
