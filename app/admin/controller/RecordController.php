@@ -28,7 +28,8 @@ class RecordController extends AdminCheckAuth
         $where = array();
         $whereDate = array();
         if(!empty($param['keywords'])) {
-            $where['a.id|a.name'] = ['like', '%' . $param['keywords'] . '%'];
+            // $where['a.id|a.name'] = ['like', '%' . $param['keywords'] . '%'];
+            $where['a.project_id'] = Db::name('project')->where(['name' => $param['keywords']])->value('id');
         }
 
         //开始时间
