@@ -12,7 +12,7 @@
 
 <div class="vae-content">
   <form class="layui-form" style="display: inline;">
-    <input type="text" name="keywords"   placeholder="ID/标题" class="layui-input" autocomplete="off" style="max-width: 200px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
+    <input type="text" name="keywords"   placeholder="所属项目" class="layui-input" autocomplete="off" style="max-width: 200px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
     (打卡时间)
     <div class="layui-input-inline">
       <input type="text" id="start_time" name="start_time" autocomplete="off" placeholder="开始时间" class="layui-input">
@@ -77,6 +77,7 @@ layui.config({
   ,$ = layui.$
   ,form = layui.form;
 
+  var limitCount = 0, keywords='', start_time='', ending_time='';
   var tableIns = table.render({
     elem: '#test'
     ,toolbar: '#toolbarDemo'
@@ -85,7 +86,7 @@ layui.config({
     ,limit: 15
     ,cols: [[ //表头
       {field: 'id', title: 'ID', sort: true, fixed: 'left', align:'center', width:80}
-      ,{field: 'project', title: '所属项目', align:'center'}
+      ,{field: 'project', title: '所属项目', align:'center', width:250}
       ,{field: 'describution', title: '描述', align:'center'}
       ,{field: 'user', title: '打卡人', align:'center'}
       ,{field: 'type', title: '打卡类型', align:'center'}
@@ -95,7 +96,52 @@ layui.config({
       ,{field: 'create_time', title: '时间', align:'center'}
       ,{field: 'whether_work_status', title:'审核状态(特殊原因不打卡)', toolbar: '#whether_work_status', align:'center', width:100}
       ,{field: 'right', toolbar: '#barDemo', width:250, align:'center'}
-    ]]
+    ]],
+    done: function (res, curr, count) {
+      limitCount = count;
+      // 重写导出按钮的方法
+      $('.layui-table-tool div[title=导出]').click(function () {
+          $(this).attr('lay-event','export');
+      });
+    }
+  });
+  table.on('toolbar(test)', function(obj){
+    var data = obj.data;
+    // 导出功能
+    if(obj.event === 'export'){
+      var loading = layer.load(1, {
+        content: '数据导出中',
+        shade: [0.4, '#000'],
+        success: function(layero) {
+            layero.css('padding-left', '30px');
+            layero.find('.layui-layer-content').css({
+              'padding-top': '40px',
+              'width': '70px',
+              'color': 'white',
+              'background-position-x': '16px'
+            });
+        }
+      })
+      $.ajax({
+          url: "/admin/record/getContentList",
+          type: "get",
+          dataType: 'json',
+          data: {
+              page: 1,
+              keywords: keywords,
+              start_time: start_time,
+              ending_time: ending_time,
+              limit: limitCount // 总条数，确保是所有的数据 
+          },
+          success: function (result) {
+              layer.close(loading);
+              table.exportFile(tableIns.config.id, result.data, "xls");
+          },
+          error:function(result){
+              layui.alert("导出失败！");
+          }
+      });
+    }
   });
   
   //监听行工具事件
@@ -137,6 +183,9 @@ layui.config({
   //监听搜索提交
   form.on('submit(vaeform)', function(data){
     console.log(data.field.keywords || data.field.start_time)
+    keywords = data.field.keywords;
+    start_time = data.field.start_time;
+    ending_time = data.field.ending_time;
     // if(data.field.keywords || data.field.start_time || data.field.ending_time) {
       tableIns.reload({where:{keywords:data.field.keywords,start_time: data.field.start_time,ending_time: data.field.ending_time}});
       vae.bundledTab();

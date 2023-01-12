@@ -12,7 +12,7 @@
 
 <div class="vae-content">
   <form class="layui-form" style="display: inline;">
-    <input type="text" name="keywords" required  lay-verify="required" placeholder="ID/标题" class="layui-input" autocomplete="off" style="max-width: 200px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
+    <input type="text" name="keywords" placeholder="ID/标题" class="layui-input" autocomplete="off" style="max-width: 200px;display: inline;margin: -10px 10px 0 0;height: 30px;" />
     <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit="" lay-filter="vaeform">提交搜索</button>
   </form> 
   <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -46,6 +46,7 @@ layui.config({
   ,$ = layui.$
   ,form = layui.form;
   
+  var limitCount = 0, keywords='';
   var tableIns = table.render({
     elem: '#test'
     ,toolbar: '#toolbarDemo'
@@ -59,7 +60,49 @@ layui.config({
       ,{field: 'typeName', title: '片区类型', align:'center'}
       ,{field: 'status', title:'状态', toolbar: '#status', align:'center', width:100}
       ,{field: 'right', toolbar: '#barDemo', width:150, align:'center'}
-    ]]
+    ]],
+    done: function (res, curr, count) {
+      limitCount = count;
+      // 重写导出按钮的方法
+      $('div[title="导出"]').click(function () {
+          $(this).attr('lay-event','export');
+      });
+    }
+  });
+  table.on('toolbar(test)', function(obj){
+    // 导出功能
+    if(obj.event === 'export'){
+      var loading = layer.load(1, {
+        content: '数据导出中',
+        shade: [0.4, '#000'],
+        success: function(layero) {
+            layero.css('padding-left', '30px');
+            layero.find('.layui-layer-content').css({
+              'padding-top': '40px',
+              'width': '70px',
+              'color': 'white',
+              'background-position-x': '16px'
+            });
+        }
+      })
+      $.ajax({
+          url: "/admin/work_order/getContentList",
+          type: "get",
+          dataType: 'json',
+          data: {
+              page: 1,
+              keywords: keywords,
+              limit: limitCount // 总条数，确保是所有的数据 
+          },
+          success: function (result) {
+              layer.close(loading);
+              table.exportFile(tableIns.config.id, result.data, "xls");
+          },
+          error:function(result){
+              layui.alert("导出失败！");
+          }
+      });
+    }
   });
   
   //监听行工具事件
@@ -86,10 +129,11 @@ layui.config({
   //监听搜索提交
   form.on('submit(vaeform)', function(data){
     console.log(data.field.keywords)
-    if(data.field.keywords) {
+    keywords = data.field.keywords;
+    // if(data.field.keywords) {
       tableIns.reload({where:{keywords:data.field.keywords}});
       vae.bundledTab();
-    }
+    // }
     return false;
   });
 });
