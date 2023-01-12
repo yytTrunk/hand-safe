@@ -20,7 +20,7 @@ class EventController extends AdminCheckAuth
         $param = vae_get_param();
         $where = array();
         if(!empty($param['keywords'])) {
-            $where['a.id|a.name'] = ['like', '%' . $param['keywords'] . '%'];
+            $where['a.id|a.question'] = ['like', '%' . $param['keywords'] . '%'];
         }
 
         $rows = empty($param['limit']) ? \think\Config::get('paginate.list_rows') : $param['limit'];
