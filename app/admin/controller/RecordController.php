@@ -56,6 +56,28 @@ class RecordController extends AdminCheckAuth
             }
         }
 
+
+        $project_arrs = collection(Db::name('project')->select())->toArray();
+        // $project_maps = new Map(project_arrs.map(item=>[item.id, item.name]));
+        $project_maps = array();
+        array_map(function($item){
+            global $project_maps;
+            $project_maps[ $item['id'] ]= $item['name'];
+        },$project_arrs);
+
+        $work_arrs = collection(Db::name('work_order')->select())->toArray();
+        $work_maps = array();
+        array_map(function($item){
+            global $work_maps;
+            $work_maps[ $item['id'] ]= $item['name'];
+        },$work_arrs);
+
+        $admin_arrs = collection(Db::name('admin')->select())->toArray();
+        $admin_maps = array();
+        array_map(function($item){
+            global $admin_maps;
+            $admin_maps[ $item['id'] ]= $item['nickname'];
+        },$admin_arrs);
         $content = \think\loader::model('Record')
             ->field('*')
             ->alias('a')
@@ -65,9 +87,15 @@ class RecordController extends AdminCheckAuth
             ->where($w)
             ->paginate($rows,false,['query'=>$param])
             ->each(function ($item,$key) use ($group_id){
-               $item->project = Db::name('project')->where(['id' => $item->project_id])->value('name');
-               $item->work = Db::name('work_order')->where(['id' => $item->work_id])->value('name');
-               $item->user = Db::name('admin')->where(['id' => $item->user_id])->value('nickname');
+            //    $item->project = Db::name('project')->where(['id' => $item->project_id])->value('name');
+            //    $item->work = Db::name('work_order')->where(['id' => $item->work_id])->value('name');
+            //    $item->user = Db::name('admin')->where(['id' => $item->user_id])->value('nickname');
+               global $admin_maps;
+               global $work_maps;
+               global $project_maps;
+               $item->project = empty($project_maps[$item->project_id]) ? "" : $project_maps[$item->project_id];
+               $item->work = empty($work_maps[$item->work_id]) ? "" : $work_maps[$item->work_id];
+               $item->user = empty($admin_maps[$item->user_id]) ? "" : $admin_maps[$item->user_id];
                if ($item->type == 1) {
                    $item->type = '危大工程打卡';
                }else{
